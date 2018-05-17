@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>On-Fire! | Inicio</title>
+  
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link href="{% static 'materialize1.css' %}" rel="stylesheet">
+
+
+
+ <style type="text/css">
+
+ 	a:focus, a:hover {
+    color: #ef681a;
+    text-decoration: underline;
+	}
+
+    body, html {
+      height: 100%;
+    }
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+  </style>
+
+<style type="text/css">
+body {
+    overflow-y:hidden;
+}
+
+.nav-hove a:hover {
+    color: #ef681a;
+}
+
+nav {
+
+    background-color: #202020;
+
+</style>
+
+<style type="text/css">
+	.img-logo {
+		height: 0%;
+   		width: 5%;
+	}
+
+	nav .sidenav-trigger {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 58px;
+    width: 66px;
+    margin: 0 12px;
+}
+</style>
+
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">Perfil</a></li>
+  <li class="divider"></li>
+  <li><a href="/logout">Salir</a></li>
+</ul>
+
+
+ <div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper nav-hove" >
+      <a href="#!" class="brand-logo "> <img class="img-logo sidenav-trigger" src="{% static 'banners/onfire.png' %}"> On-Fire!</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+      	 <li><a href="#/fiestas">Inicio</a></li>
+        <li><a href="#/productos">Productos</a></li>
+        <li><a href="#/contacto">Contaco</a></li>
+        {% if user.is_authenticated %}
+			<li>
+				<a href="#" class="dropdown-trigger"
+				data-target="dropdown1" >
+			{{ request.user.username }}</a></li>
+			{% else %}
+			<li><a href="/login" > Ingresar</a></li>
+				{% endif %}	
+
+      </ul>
+      {% if user.is_authenticated %}
+      <a href="#"  class="sidenav-trigger dropdown-trigger right" data-target="dropdown1"  >{{ request.user.username }}</a>
+		{% else %}
+		<a href="/login" class="sidenav-trigger dropdown-trigger right"> Ingresar</a>
+		{% endif %}
+    </div>
+
+  </nav>
+</div>
+  <ul class="sidenav" id="mobile-demo">
+   <li><a href="#/fiestas">Inicio</a></li>
+    <li><a href="#/productos">Productos</a></li>
+    <li><a href="#/contacto">Contacto</a></li>
+  </ul>
+       
+
+  <anms-root>
+    <div class="app-loading">
+      <div class="logo"></div>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+
+
+
+  </anms-root>
+
+  <body>
+
+   <script src="{% static 'material/js/jquery.js' %}"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <script src="{% static 'ang/inline.bundle.js' %}"></script>
+   <script src="{% static 'ang/polyfills.bundle.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'ang/vendor.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ang/main.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ang/styles.bundle.js' %}"></script>
+
+
+ {% include 'material/includes/material_js.html' %}
+
+
+     <script type="text/javascript">
+
+
+  
+    var elems = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elems, options);
+
+
+	var options = {
+    coverTrigger: false,
+    constrainWidth: false,
+	};
+
+	var elem = document.querySelector('.dropdown-trigger');
+	var dropdown = new M.Dropdown(elem, options);
+
+  	$(".dropdown-trigger").dropdown();
+
+
+ 	var elem = document.querySelector('.sidenav');
+	var instance = M.Sidenav.init(elem);
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.mobile-demo').sidenav();
+
+  });
+
+
+  // Or with jQuery
+   
+ $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+  </script>
+
+
+
+	  </body>
+  </html>
+  
+

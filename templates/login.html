@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>On-Fire! | Bienvenido!</title>
+
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'materialize.css' %}" rel="stylesheet">
+
+
+
+
+
+
+   <style type="text/css">
+
+
+
+      html, body {
+          background: #eee;
+          height: 100%;
+      }
+
+      input, select, textarea{
+    color: #fafafa;
+      }
+
+
+      .card-color {
+            background-color:: #202020
+      }
+    </style>
+
+    <style type="text/css">
+
+  .img-logo {
+    height: 0%;
+      width: 15%;
+  }
+
+  nav .sidenav-trigger {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: 58px;
+    width: 66px;
+    margin: 0 12px;
+}
+</style>
+    
+<style type="text/css">
+    .aligned-with-icon{
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px; /* optional */
+}
+</style>
+
+    
+  </head>
+
+
+  <br>
+    <br>
+  <body class="valign-wrapper2">
+      
+      <div class="container expand-on-small-only">
+          
+<div class="row valign change-form">
+    <div class="col s12 m8 offset-m2 l8 offset-l2">
+        <div class="card" >
+            <form method="POST" enctype='multipart/form-data'>
+                 
+                <div class="card-content">
+                 
+                    <a href="/" class="brand-logo "> 
+
+                    <img class="img-logo sidenav-trigger" src="{% static 'banners/onfire.png' %}">
+                    <span class=" aligned-with-icon grey-text text-darken-2"><h5> </h5></span>
+                  
+                    </a>
+                    
+                    <br>
+                  
+                    <center>
+                    <h5 class="grey-text text-darken-2">¡Hola! Ingresa tu e-mail y contraseña</h6>
+                    </center>
+                
+              {% if form.non_field_errors %}
+                <div id="error_login" class="notif col s9 l5"  >  
+       
+
+                  <center>{{ form.non_field_errors  }}</center> 
+           
+            </div>  
+             {% endif %}
+    
+<div class="row">
+    <div class="input-field col s12 required" id="email">
+        <i class="material-icons prefix">email</i> <input id="email" name="email" type="email" required="" email>
+        <label for="email">Correo Electronico</label>
+         
+        
+        
+    </div>
+</div>
+
+
+
+ 
+
+<div class="row">
+    <div class="input-field col s12 required" id="id_password_container">
+        <i class="material-icons prefix">lock</i><input id="password" name="password" type="password" required="" >
+        <label for="password">Contraseña</label>
+      
+        
+    </div>
+</div>
+ 
+<div class="row">
+    <div class="checkbox-field col s12 right-align" id="id_keep_logged_container">
+        <label>
+        <input class="filled-in " id="id_keep_logged" name="keep_logged" type="checkbox"><span for="id_keep_logged">Recordar cuenta</span></label>
+        
+    </div>
+</div>
+
+   
+
+                </div>
+                <div class="card-action">
+                    
+                    <div class="right-align">
+                        
+    	
+   <label> no tienes una cuenta?</label><a href="/registro" button class="waves-effect waves-teal btn-flat">Registrarse
+    	</a>
+        
+        <button class="btn waves-effect waves-light" type="submit" name="action">Ingresar
+  
+  </button>
+        
+     
+        {% csrf_token %}
+    
+
+                    </div>
+                    
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+  .notif {
+  position: fixed;
+  top: 5px; 
+  left: 50%;
+  width: 25%;
+  background-color: #323232;
+  padding: 12px 24px 17px 24px;
+  vertical-align: middle;
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(0,0,0,0.2);
+  border-radius: 1px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.peek {
+    -webkit-animation: peek 5s forwards;
+    -webkit-animation-delay: 0.5s;
+    animation: peek 5s forwards;
+    
+}
+
+
+
+
+</style>
+
+
+      </div>
+      
+
+
+ <script src="{% static 'material/js/jquery.js' %}"></script>
+ {% include 'material/includes/material_js.html' %}
+
+<script type="text/javascript">
+setTimeout(function() {
+    $('#error_login').fadeOut('slow');
+}, 3000); // <-- time in milliseconds
+</script>
+
+
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+</html>

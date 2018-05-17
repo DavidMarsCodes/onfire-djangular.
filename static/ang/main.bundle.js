@@ -249,7 +249,6 @@ var AppComponent = (function () {
         var _this = this;
         this.dataService.getObjectList();
         console.log(this.dataService.objectList);
-        this.dataService.getUser();
         this.store
             .select(__WEBPACK_IMPORTED_MODULE_10__settings__["d" /* selectorSettings */])
             .subscribe(function (settings) {
@@ -1578,7 +1577,7 @@ var DataService = (function () {
     /** CRUD METHODS */
     DataService.prototype.getObjectList = function () {
         var _this = this;
-        this.http.get('http://127.0.0.1:8000/api/partys/')
+        this.http.get('https://onfire-djng.herokuapp.com/api/partys/')
             .map(function (data) {
             return data.json();
         }).toPromise().then(function (x) {
@@ -1591,7 +1590,7 @@ var DataService = (function () {
         headers.append('Authorization:', 'Token ' + this.get_token);
         var opts = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]();
         opts.headers = headers;
-        return this.http.post('http://127.0.0.1:8000/api/partys/create/', opts).map(function (x) { return x.json(); });
+        return this.http.post('https://onfire-djng.herokuapp.com/api/partys/create/', opts).map(function (x) { return x.json(); });
     };
     /** CRUD METHODS */
     DataService.prototype.PostObject = function (emp) {
@@ -1600,14 +1599,14 @@ var DataService = (function () {
         headers.append('Authorization:', 'Token ' + this.get_token);
         var opts = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ method: __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestMethod */].Post, headers: headers });
         opts.headers = headers;
-        return this.http.post('http://127.0.0.1:8000/api/partys/create/', opts).map(function (x) { return x.json(); });
+        return this.http.post('https://onfire-djng.herokuapp.com/api/partys/create/', opts).map(function (x) { return x.json(); });
     };
     // ADD, POST METHOD
     DataService.prototype.postObject = function (emp) {
         var body = JSON.stringify(emp);
         var headerOptions = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* RequestOptions */]({ method: __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestMethod */].Post, headers: headerOptions });
-        return this.http.post('http://127.0.0.1:8000/api/partys/create/', body, requestOptions).map(function (x) { return x.json(); });
+        return this.http.post('https://onfire-djng.herokuapp.com/api/partys/create/', body, requestOptions).map(function (x) { return x.json(); });
     };
     // UPDATE, PUT METHOD
     DataService.prototype.putEmployee = function (id, emp) {

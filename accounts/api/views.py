@@ -74,7 +74,7 @@ class UsuarioDetalleByIdAPIView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UsuarioDetalleSerializer
     lookup_field = 'id'
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 class UsuarioEditarAPIView(RetrieveUpdateAPIView):
     """
